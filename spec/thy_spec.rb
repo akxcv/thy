@@ -18,7 +18,7 @@ RSpec.describe Thy do
         valid_example = TYPE_EXAMPLES[type_name].sample
 
         counterexample_keys = TYPE_EXAMPLES.keys - [type_name]
-        counterexample_keys -= %i[Numeric] if type_name == :Float || type_name == :Fnteger
+        counterexample_keys -= %i[Numeric] if type_name == :Float || type_name == :Integer
         counterexample_keys -= %i[Float Integer] if type_name == :Numeric
 
         invalid_example = TYPE_EXAMPLES[counterexample_keys.sample].sample
