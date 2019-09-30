@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'thy/type'
+require 'thy/types'
 
 require 'thy/types/string'
 require 'thy/types/symbol'
@@ -34,6 +35,8 @@ module Thy
   Integer = Types::Integer
   Boolean = Types::Boolean
 
+  include Types
+
   class << self
     def refine_type(type_1, type_2)
       Type.new do |value|
@@ -45,31 +48,5 @@ module Thy
         end
       end
     end
-
-    # rubocop:disable Naming/MethodName
-    def Array(type)
-      Types::Array.new(type)
-    end
-
-    def Hash(schema)
-      Types::Hash.new(schema)
-    end
-
-    def Map(key_type, value_type)
-      Types::Map.new(key_type, value_type)
-    end
-
-    def Enum(*types)
-      Types::Enum.new(types)
-    end
-
-    def Variant(*values)
-      Types::Variant.new(values)
-    end
-
-    def Option(type)
-      Types::Option.new(type)
-    end
-    # rubocop:enable Naming/MethodName
   end
 end
