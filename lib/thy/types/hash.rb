@@ -16,7 +16,7 @@ module Thy
         if @schema_length != value.length
           return Result::Failure.new("Expected #{value.inspect} to contain #{@schema_length} keys")
         end
-        if @schema_keys != value.keys
+        if @schema_keys & value.keys != @schema_keys
           return Result::Failure.new(
             "Expected #{value.inspect} to contain keys: #{@schema_keys.inspect}",
           )

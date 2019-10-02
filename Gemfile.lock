@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    thy (0.1.0)
+    thy (0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -67,4 +67,4 @@ DEPENDENCIES
   thy!
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

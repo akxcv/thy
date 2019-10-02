@@ -102,6 +102,12 @@ RSpec.describe Thy do
           expect(hsh.check(kek: 1).success?).to eq(false)
           expect(hsh.check('cheburek').success?).to eq(false)
         end
+
+        it 'ignores key order' do
+          hsh = described_class::Hash(kek: described_class::Integer, pek: described_class::String)
+
+          expect(hsh.check(pek: '1', kek: 2).success?).to eq(true)
+        end
       end
 
       specify 'untyped hashes' do
