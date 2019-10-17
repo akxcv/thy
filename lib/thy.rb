@@ -9,6 +9,7 @@ require 'thy/types/numeric'
 require 'thy/types/integer'
 require 'thy/types/float'
 require 'thy/types/boolean'
+require 'thy/types/nil'
 
 require 'thy/types/array'
 require 'thy/types/untyped_array'
@@ -21,6 +22,9 @@ require 'thy/types/enum'
 require 'thy/types/variant'
 
 require 'thy/types/option'
+
+require 'thy/types/instance_of'
+require 'thy/types/class_extending'
 
 require 'thy/result/success'
 require 'thy/result/failure'

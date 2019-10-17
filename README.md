@@ -126,6 +126,10 @@ Thy::Integer.check(3).success? # => true
 # Boolean
 Thy::Boolean.check(true).success? # => true
 Thy::Boolean.check(false).success? # => true
+
+# nil
+Thy::Nil.check(nil).success? # => true
+Thy::Nil.check(0).success? # => false
 ```
 
 ### Parameterized types
@@ -154,6 +158,17 @@ Thy::Variant('USD', 'EUR').check('EUR').success? # => true
 # Option
 Thy::Option(Thy::String).check('a string').success? # => true
 Thy::Option(Thy::String).check(nil).success? # => true
+
+# InstanceOf
+class A; end
+class B < A; end
+class C; end
+Thy::InstanceOf(A).check(B.new).success? # => true
+Thy::InstanceOf(A).check(C.new).success? # => false
+
+# ClassExtending
+Thy::ClassExtending(A).check(B).success? # => true
+Thy::ClassExtending(A).check(C).success? # => false
 ```
 
 ### Other types
