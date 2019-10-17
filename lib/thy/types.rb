@@ -30,6 +30,14 @@ module Thy::Types
     def Option(type)
       Option.new(type)
     end
+
+    def InstanceOf(klass)
+      InstanceOf.new(klass)
+    end
+
+    def ClassExtending(klass)
+      ClassExtending.new(klass)
+    end
     # rubocop:enable Naming/MethodName
   end
 end

@@ -33,6 +33,13 @@ RSpec.describe Thy do
     end
   end
 
+  context 'nil type' do
+    specify do
+      expect(described_class::Nil.check(nil).success?).to eq(true)
+      expect(described_class::Nil.check(0).success?).to eq(false)
+    end
+  end
+
   context 'complex types' do
     it 'provides enums' do
       enum = described_class::Variant(described_class::String, described_class::Integer)
@@ -132,6 +139,34 @@ RSpec.describe Thy do
         expect(hsh.check(1 => 'kek').success?).to eq(false)
       end
     end
+
+    context 'instance of' do
+      before do
+        stub_const('MyClass', Class.new)
+        stub_const('OtherClass', Class.new)
+      end
+
+      let(:instance) { MyClass.new }
+      let(:other_instance) { OtherClass.new }
+
+      specify do
+        expect(described_class::InstanceOf(MyClass).check(instance).success?).to eq(true)
+        expect(described_class::InstanceOf(MyClass).check(other_instance).success?).to eq(false)
+      end
+    end
+
+    context 'class extending' do
+      before do
+        stub_const('MyClass', Class.new)
+        stub_const('Descendant', Class.new(MyClass))
+        stub_const('OtherClass', Class.new)
+      end
+
+      specify do
+        expect(described_class::ClassExtending(MyClass).check(Descendant).success?).to eq(true)
+        expect(described_class::ClassExtending(MyClass).check(OtherClass).success?).to eq(false)
+      end
+    end
   end
 
   context 'custom types' do
@@ -168,7 +203,7 @@ RSpec.describe Thy do
 
   describe 'type composition' do
     let(:non_zero_integer) do
-      described_class::refine_type(
+      described_class.refine_type(
         described_class::Integer,
         described_class::Type.new { |v| v != 0 },
       )
