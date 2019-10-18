@@ -76,7 +76,7 @@ module Types
   include Thy::Types
 
   NonZeroValue = Thy::Type.new do |value|
-    value == 0 || Thy::Result::Failure.new("Expected #{value.inspect} to be nonzero")
+    value != 0 || Thy::Result::Failure.new("Expected #{value.inspect} to be nonzero")
   end
 end
 ```
