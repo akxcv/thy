@@ -11,6 +11,9 @@ require 'thy/types/float'
 require 'thy/types/boolean'
 require 'thy/types/nil'
 
+require 'thy/types/time'
+require 'thy/types/datetime'
+
 require 'thy/types/array'
 require 'thy/types/untyped_array'
 
