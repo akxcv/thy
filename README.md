@@ -127,6 +127,15 @@ Thy::Integer.check(3).success? # => true
 Thy::Boolean.check(true).success? # => true
 Thy::Boolean.check(false).success? # => true
 
+# Time
+Thy::Time.check(Time.now).success? # => true
+Thy::Time.check(0).success? # => false
+
+# DateTime
+require 'date'
+Thy::DateTime.check(DateTime.now).success? # => true
+Thy::DateTime.check(0).success? # => false
+
 # nil
 Thy::Nil.check(nil).success? # => true
 Thy::Nil.check(0).success? # => false

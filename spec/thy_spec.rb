@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 RSpec.describe Thy do
   context 'primitive types' do
     TYPE_EXAMPLES = {
@@ -9,6 +11,8 @@ RSpec.describe Thy do
       Float: [0.1, 123.123, -69.69],
       Integer: [0, 1, -1, -100, 123],
       Boolean: [true, false],
+      Time: [Time.at(0)],
+      DateTime: [DateTime.now],
     }.freeze
 
     PRIMITIVE_TYPES = TYPE_EXAMPLES.keys
