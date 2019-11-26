@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    thy (0.1.3)
+    thy (0.1.4)
 
 GEM
   remote: https://rubygems.org/
