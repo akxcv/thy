@@ -157,12 +157,12 @@ Thy::Hash({
 # Map
 Thy::Map(Thy::Symbol, Thy::Integer).check({ a: 1, b: 2 }).success? # => true
 
-# Enum
-Thy::Enum(Thy::Integer, Thy::Float).check(3.14).success? # => true
-Thy::Enum(Thy::Integer, Thy::Float).check(3).success? # => true
-
 # Variant
-Thy::Variant('USD', 'EUR').check('EUR').success? # => true
+Thy::Variant(Thy::Integer, Thy::Float).check(3.14).success? # => true
+Thy::Variant(Thy::Integer, Thy::Float).check(3).success? # => true
+
+# Enum
+Thy::Enum('USD', 'EUR').check('EUR').success? # => true
 
 # Option
 Thy::Option(Thy::String).check('a string').success? # => true
